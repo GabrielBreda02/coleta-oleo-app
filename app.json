@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Coleta de Óleo",
+    "slug": "coleta-oleo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "coletaoleo",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f1f4ec",
+      "dark": {
+        "backgroundColor": "#0e120d"
+      }
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gabrielbreda.coletaoleo"
+    },
+    "android": {
+      "package": "com.gabrielbreda.coletaoleo",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundColor": "#1e7f46"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
