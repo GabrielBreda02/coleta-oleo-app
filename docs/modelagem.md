@@ -282,4 +282,4 @@ flowchart TB
     Dados --> Arm
 ```
 
-**Tecnologias:** React Native 0.86 com Expo SDK 57, React 19, Context API + `useReducer`, AsyncStorage, `react-native-svg`, Jest + Testing Library. Detalhes no [README](../README.md#bibliotecas-usadas).
+**Tecnologias:** React Native 0.88 com Expo SDK 58, React 19.3, Context API + `useReducer`, AsyncStorage, `react-native-svg`, Jest + Testing Library. Detalhes no [README](../README.md#bibliotecas-usadas).

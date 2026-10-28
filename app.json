@@ -7,7 +7,6 @@
     "icon": "./assets/icon.png",
     "scheme": "coletaoleo",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -29,6 +28,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font",
+      "expo-splash-screen",
+      "expo-status-bar"
+    ]
   }
 }

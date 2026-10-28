@@ -20,6 +20,8 @@ Projeto final da disciplina de Programação para Dispositivos Móveis.
 
 Pré-requisitos: [Node.js](https://nodejs.org) 20 ou mais novo no computador e o app **Expo Go** no celular (grátis, na App Store ou na Play Store).
 
+O projeto usa o **Expo SDK 58** (React Native 0.88). O Expo Go da loja roda só a versão mais nova do SDK. Se aparecer "Project is incompatible with this version of Expo Go", o projeto precisa ser atualizado com `npx expo install expo@latest --fix`.
+
 ```bash
 npm install        # só na primeira vez
 npx expo start     # inicia o projeto e mostra um QR Code
