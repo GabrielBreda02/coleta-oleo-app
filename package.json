@@ -21,7 +21,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest",
-    "tunel": "expo start --tunnel"
+    "tunel": "expo start --tunnel ngrok"
   },
   "private": true,
   "devDependencies": {

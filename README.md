@@ -33,8 +33,10 @@ npx expo start     # inicia o projeto e mostra um QR Code
 O computador e o celular precisam estar na mesma rede. Se a rede bloquear (Wi-Fi de faculdade costuma bloquear), use:
 
 ```bash
-npx expo start --tunnel
+npm run tunel       # é o mesmo que: npx expo start --tunnel ngrok
 ```
+
+> No SDK 58, o `--tunnel` sozinho usa o túnel da Expo, que exige estar logado (`npx expo login`). Com `ngrok` não precisa de conta — por isso o atalho `npm run tunel` já usa ele.
 
 O modo túnel passa pela internet, então funciona mesmo em redes diferentes — inclusive com o computador conectado no seu roteador de bolso (hotspot do celular).
 
@@ -53,7 +55,7 @@ O Expo Go precisa do projeto rodando em algum computador — **mas esse computad
 
 **Plano A — PC de casa ligado, celular no 4G**
 
-1. **Na véspera**, no PC de casa: `npm run tunel` (é o `expo start --tunnel`). Na primeira vez ele pode pedir para instalar o `@expo/ngrok` — aceite.
+1. **Na véspera**, no PC de casa: `npm run tunel` (é o `expo start --tunnel ngrok`). Na primeira vez ele pode pedir para instalar o `@expo/ngrok` — aceite.
 2. No terminal aparece um endereço parecido com `exp://algo-anonymous-8081.exp.direct`. **Anote esse endereço** (manda pra ti mesmo no WhatsApp).
 3. Ainda em casa, abra o app no celular pelo QR Code, **crie sua conta** (ela fica salva no celular, então na hora da apresentação o app já abre logado) e confira se está tudo certo.
 4. **Desligue a suspensão automática do PC:** Configurações → Sistema → Energia → "Tela e suspensão" → Suspensão: Nunca. Deixe o terminal aberto e o PC ligado.
