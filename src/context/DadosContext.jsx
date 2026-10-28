@@ -57,6 +57,7 @@ export function DadosProvider({ children, hoje = hojeISO(), armazenamento = arma
           data: dados.data,
           doador: dados.doador?.trim() ?? '',
           observacao: dados.observacao?.trim() ?? '',
+          registradoPor: dados.registradoPor ?? null, // id do usuário logado
           criadoEm: Date.now(),
         };
         despachar({ tipo: 'adicionarEntrega', entrega });

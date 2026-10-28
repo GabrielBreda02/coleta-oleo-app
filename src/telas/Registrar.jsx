@@ -9,6 +9,7 @@ import Tela from '../componentes/Tela.jsx';
 import Texto from '../componentes/Texto.jsx';
 import { useToast } from '../componentes/Toast.jsx';
 import Vazio from '../componentes/Vazio.jsx';
+import { useAutenticacao } from '../context/AutenticacaoContext.jsx';
 import { useDados } from '../context/DadosContext.jsx';
 import { useNavegacao } from '../navegacao/NavegacaoContext.jsx';
 import { useEstilos, useTema } from '../tema.js';
@@ -22,6 +23,7 @@ const ATALHOS = [0.5, 1, 2, 5];
 export default function Registrar({ pontoId: pontoInicial }) {
   const { pontos, entregas, config, hoje, acoes } = useDados();
   const { navegar } = useNavegacao();
+  const { usuario } = useAutenticacao();
   const mostrarToast = useToast();
   const tema = useTema();
   const estilos = useEstilos(criarEstilos);
@@ -59,7 +61,7 @@ export default function Registrar({ pontoId: pontoInicial }) {
     setErros(novosErros);
     if (temErros(novosErros)) return;
 
-    const entrega = acoes.adicionarEntrega(valores);
+    const entrega = acoes.adicionarEntrega({ ...valores, registradoPor: usuario?.id });
     const nomePonto = pontos.find((p) => p.id === entrega.pontoId)?.nome;
     mostrarToast(`${formatarLitros(entrega.litros)} registrados em ${nomePonto}`, {
       acao: { rotulo: 'Desfazer', aoPressionar: () => acoes.excluirEntrega(entrega.id) },

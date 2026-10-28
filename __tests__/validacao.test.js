@@ -1,4 +1,4 @@
-import { temErros, validarEntrega, validarPonto } from '../src/utils/validacao.js';
+import { temErros, validarCadastro, validarEntrega, validarLogin, validarPonto } from '../src/utils/validacao.js';
 
 const pontos = [{ id: 'p1' }];
 const hoje = '2026-09-19';
@@ -40,5 +40,36 @@ describe('validarEntrega', () => {
   it('rejeita data no futuro ou vazia', () => {
     expect(validarEntrega({ ...valida, data: '2026-09-20' }, { pontos, hoje }).data).toMatch(/futuro/);
     expect(validarEntrega({ ...valida, data: '' }, { pontos, hoje }).data).toBeTruthy();
+  });
+});
+
+describe('validarCadastro', () => {
+  const valido = { nome: 'Ana', email: 'ana@email.com', senha: '123456', confirmacao: '123456' };
+
+  it('aceita um cadastro completo', () => {
+    expect(validarCadastro(valido)).toEqual({});
+  });
+
+  it('aponta cada campo vazio', () => {
+    const erros = validarCadastro({ nome: '', email: '', senha: '', confirmacao: '' });
+    expect(Object.keys(erros).sort()).toEqual(['email', 'nome', 'senha']);
+  });
+
+  it('rejeita e-mail inválido, senha curta e confirmação diferente', () => {
+    expect(validarCadastro({ ...valido, email: 'ana@' }).email).toMatch(/inválido/);
+    expect(validarCadastro({ ...valido, senha: '123', confirmacao: '123' }).senha).toMatch(/6 caracteres/);
+    expect(validarCadastro({ ...valido, confirmacao: '654321' }).confirmacao).toMatch(/não são iguais/);
+  });
+
+  it('não aceita e-mail repetido, mesmo com maiúsculas e espaços', () => {
+    const usuarios = [{ email: 'ana@email.com' }];
+    expect(validarCadastro({ ...valido, email: ' ANA@email.com ' }, { usuarios }).email).toMatch(/Já existe/);
+  });
+});
+
+describe('validarLogin', () => {
+  it('exige e-mail e senha', () => {
+    expect(Object.keys(validarLogin({ email: ' ', senha: '' })).sort()).toEqual(['email', 'senha']);
+    expect(validarLogin({ email: 'a@b.com', senha: 'x' })).toEqual({});
   });
 });

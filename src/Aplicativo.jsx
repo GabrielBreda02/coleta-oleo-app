@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { useAutenticacao } from './context/AutenticacaoContext.jsx';
 import { useDados } from './context/DadosContext.jsx';
 import BarraAbas from './navegacao/BarraAbas.jsx';
 import { useNavegacao } from './navegacao/NavegacaoContext.jsx';
 import Topo from './navegacao/Topo.jsx';
+import Acesso from './telas/Acesso.jsx';
 import Ajustes from './telas/Ajustes.jsx';
 import Dicas from './telas/Dicas.jsx';
 import Historico from './telas/Historico.jsx';
@@ -29,7 +31,9 @@ const TELAS = {
 
 export default function Aplicativo() {
   const { tela, params, podeVoltar, abaAtiva, voltar, trocarAba, navegar } = useNavegacao();
-  const { carregando, config } = useDados();
+  const { carregando: carregandoDados, config } = useDados();
+  const { usuario, carregando: carregandoConta } = useAutenticacao();
+  const carregando = carregandoDados || carregandoConta;
   const tema = useTema();
   const estilos = useEstilos(criarEstilos);
 
@@ -46,6 +50,9 @@ export default function Aplicativo() {
       </View>
     );
   }
+
+  // Sem ninguém logado, mostra a tela de entrar / criar conta
+  if (!usuario) return <Acesso />;
 
   const definicao = TELAS[tela] ?? TELAS.inicio;
   const Componente = definicao.Componente;

@@ -33,4 +33,39 @@ export function validarEntrega(entrega, { pontos, hoje }) {
   return erros;
 }
 
+export const SENHA_MINIMO = 6;
+
+/** Deixa o e-mail num formato só (sem espaços e em minúsculas) para comparar. */
+export const normalizarEmail = (email) => (email ?? '').trim().toLowerCase();
+
+const EMAIL_VALIDO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export function validarCadastro(dados, { usuarios = [] } = {}) {
+  const erros = {};
+
+  const nome = dados.nome?.trim() ?? '';
+  if (!nome) erros.nome = 'Informe seu nome.';
+  else if (nome.length < 2) erros.nome = 'O nome precisa ter pelo menos 2 letras.';
+
+  const email = normalizarEmail(dados.email);
+  if (!email) erros.email = 'Informe seu e-mail.';
+  else if (!EMAIL_VALIDO.test(email)) erros.email = 'E-mail inválido. Ex.: nome@email.com';
+  else if (usuarios.some((u) => u.email === email)) erros.email = 'Já existe uma conta com esse e-mail.';
+
+  const senha = dados.senha ?? '';
+  if (!senha) erros.senha = 'Crie uma senha.';
+  else if (senha.length < SENHA_MINIMO) erros.senha = `A senha precisa ter pelo menos ${SENHA_MINIMO} caracteres.`;
+
+  if (!erros.senha && dados.confirmacao !== senha) erros.confirmacao = 'As senhas não são iguais.';
+
+  return erros;
+}
+
+export function validarLogin(dados) {
+  const erros = {};
+  if (!normalizarEmail(dados.email)) erros.email = 'Informe seu e-mail.';
+  if (!dados.senha) erros.senha = 'Informe sua senha.';
+  return erros;
+}
+
 export const temErros = (erros) => Object.keys(erros).length > 0;

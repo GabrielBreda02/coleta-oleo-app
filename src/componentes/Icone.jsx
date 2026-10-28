@@ -45,6 +45,11 @@ const DESENHOS = {
   desceu: [['path', 'M12 5v14M6 13l6 6 6-6']],
   tabela: [['path', 'M4 5h16v14H4zM4 10h16M4 15h16M10 5v14']],
   grafico: [['path', 'M5 20V10M12 20V4M19 20v-7']],
+  usuario: [
+    ['circle', { cx: 12, cy: 8, r: 4 }],
+    ['path', 'M4 21a8 8 0 0 1 16 0'],
+  ],
+  sair: [['path', 'M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l-5-5 5-5M5 12h11']],
 };
 
 export default function Icone({ nome, tamanho = 22, cor }) {
