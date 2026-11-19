@@ -12,6 +12,8 @@ Projeto final da disciplina de Programação para Dispositivos Móveis.
 |---|---|---|---|
 | ![Registrar](docs/prints/6-registrar.png) | ![Histórico](docs/prints/9-historico.png) | ![Dicas](docs/prints/10-dicas.png) | ![Ajustes](docs/prints/11-ajustes.png) |
 
+📚 **Guia de estudo para a apresentação** (onde está cada coisa no código, com exemplos): [docs/GUIA-DE-ESTUDO.md](docs/GUIA-DE-ESTUDO.md)
+
 📐 **Modelagem do sistema** (requisitos, casos de uso, modelo de dados, fluxo de telas e arquitetura): [docs/modelagem.md](docs/modelagem.md)
 
 ---
