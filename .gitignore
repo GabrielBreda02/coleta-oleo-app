@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# guia pessoal de estudo (fica só neste PC)
+docs/GUIA-DE-ESTUDO.md
